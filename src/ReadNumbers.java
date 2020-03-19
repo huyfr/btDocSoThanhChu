@@ -9,18 +9,25 @@ public class ReadNumbers
         int number, divisionFirst, divisionSecond, divisionThird=0, divisionFour=0;
         Scanner scanner=new Scanner(System.in);
 
-        System.out.println("Enter a number: ");
+        System.out.print("Enter a number: ");
         number=scanner.nextInt();
 
         while (number>1000)
         {
-            System.out.println("Enter a number: ");
+            System.out.print("Enter a number: ");
             number=scanner.nextInt();
         }
 
-        if (number<=10)
+        if (number<10)
         {
-            System.out.println(third(number));
+            if (number==0)
+            {
+                System.out.println("Zero");
+            }
+            else
+            {
+                System.out.println(third(number));
+            }
         }
         else if (number<21)
         {
@@ -37,19 +44,25 @@ public class ReadNumbers
             divisionFirst=number/100;   //Lấy được số đầu tiên trong 3 số.
             divisionSecond=number%100;  //Lấy được 2 số sau số đầu tiên trong 3 số.
 
-            if (divisionSecond>=10)
+            if (divisionSecond>9 && divisionSecond<21)
             {
-                divisionThird=divisionSecond/10;        //Lấy được số đầu tiên trong 2 số.
-                divisionFour=divisionSecond%10;         //Lấy được số thứ 2 trong 2 số.
+                System.out.println((third(divisionFirst))+" hundred "+second(divisionSecond));
             }
             else if (divisionSecond==0)
             {
                 System.out.println(third(divisionFirst)+" hundred");
             }
-            else
+            else if (divisionSecond>0 && divisionSecond<10)
             {
                 divisionFour=number%100;        //Lấy số cuối cùng trong 3 số;
                 System.out.println((third(divisionFirst))+" hundred "+first(divisionThird)+" "+third(divisionFour));
+            }
+            else
+            {
+                divisionThird=divisionSecond/10;        //Lấy được số đầu tiên trong 2 số.
+                divisionFour=divisionSecond%10;         //Lấy được số thứ 2 trong 2 số.
+
+                System.out.println(third(divisionFirst)+" hundred "+first(divisionThird)+" "+third(divisionFour));
             }
         }
     }
@@ -58,8 +71,8 @@ public class ReadNumbers
     {
         switch (number)
         {
-            case 0:
-                return "zero";
+//            case 0:
+//                return "zero";
             case 1:
                 return "one";
             case 2:
@@ -79,7 +92,7 @@ public class ReadNumbers
             case 9:
                 return "nine";
             default:
-                return "out of ability";
+                return "";
         }
     }
 
@@ -112,7 +125,7 @@ public class ReadNumbers
             case 20:
                 return "twenty";
             default:
-                return "out of ability";
+                return "";
         }
     }
 
@@ -139,8 +152,7 @@ public class ReadNumbers
             case 9:
                 return "ninety";
             default:
-                return "out of ability";
+                return "";
         }
     }
 }
-
